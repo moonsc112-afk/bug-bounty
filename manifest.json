@@ -1,0 +1,611 @@
+{
+  "count": 121,
+  "files": 285,
+  "skills": [
+    {
+      "name": "hunt-api-misconfig",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-business-logic",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-cache-poison",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-graphql",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-jwt-crypto",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-oauth",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-sqli",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-ssrf",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-websocket",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "hunt-xss",
+      "cat": "01-web-api-hunting",
+      "source": "installed"
+    },
+    {
+      "name": "web-api-bounty-hunt",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "chain-scope-guard",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "new-feature-bug-hunt",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "bugbounty-target-selection",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "bounty-target-verdicts",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "bounty-hunt-pipeline",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "bugbounty-fyi-monitor",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "bugbounty-payout-negotiation",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "writeup-intel-digest",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "x-profile-intel-vetting",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "opportunity-vetting",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "audit-competition-hunt",
+      "cat": "02-recon-targeting",
+      "source": "installed"
+    },
+    {
+      "name": "evm-defi-bounty-audit",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "foundry-audit-harness",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "defi-bounty-predive",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "evm-bounty-source-audit",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "web3-audit",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "meme-coin-audit",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "solana-bounty-onchain-poc",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "solana-vulnerability-scanner",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "vyper-solidity-bounty-hunt",
+      "cat": "03-web3-smart-contract",
+      "source": "installed"
+    },
+    {
+      "name": "security-audit",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "agent-mcp-codebase-audit",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "browser-extension-security-audit",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "android-app-security-review",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "electron-app-hardening",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "installer-static-triage",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "cspt-client-side-path-hunt",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "race-condition-web-api",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "web-api-authz-matrix",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "llm-fuzz-harness-eval",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "redteam-mindset",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "security-detection-research",
+      "cat": "04-security-auditing",
+      "source": "installed"
+    },
+    {
+      "name": "finding-validation-gate",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "triage-validation",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "browser-poc-verification",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "evidence-hygiene",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "report-writing",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "bugcrowd-reporting",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "shared-security-post-vetting",
+      "cat": "05-validation-reporting",
+      "source": "installed"
+    },
+    {
+      "name": "dogfood",
+      "cat": "06-supporting",
+      "source": "installed"
+    },
+    {
+      "name": "systematic-debugging",
+      "cat": "06-supporting",
+      "source": "installed"
+    },
+    {
+      "name": "rea-static-analysis",
+      "cat": "06-supporting",
+      "source": "installed"
+    },
+    {
+      "name": "hermes-mcp-mantis-login",
+      "cat": "06-supporting",
+      "source": "installed"
+    },
+    {
+      "name": "apk-redteam-pipeline",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "bb-local-toolkit",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "bb-methodology",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    },
+    {
+      "name": "bug-bounty",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    },
+    {
+      "name": "cloud-iam-deep",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "enterprise-vpn-attack",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "exploit-completion",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-aspnet",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-ato",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-auth-bypass",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-brute-force",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-captcha-bypass",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-cicd",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-clickjacking",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-cloud-misconfig",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-cors",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-csrf",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-deserialization",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-dispatch",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-dom",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-exceptional-conditions",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-file-upload",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-fintech-graphql",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-forgot-password",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-grpc",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-host-header",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-html-injection",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-http-smuggling",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-idor",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-k8s",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-laravel",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-ldap",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-lfi",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-llm-ai",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-mfa-bypass",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-misc",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-nextjs",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-nodejs",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-nosqli",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-ntlm-info",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-open-redirect",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-race-condition",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-rag-vector",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-rce",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-saml",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-session",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-shadow-api",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-sharepoint",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-source-leak",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-spa-api",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-springboot",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-ssti",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-subdomain",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-tls-network",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "hunt-xxe",
+      "cat": "01-web-api-hunting",
+      "source": "cache"
+    },
+    {
+      "name": "ios-redteam-pipeline",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "m365-entra-attack",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "mid-engagement-ir-detection",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "offensive-osint",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    },
+    {
+      "name": "okta-attack",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "osint-methodology",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    },
+    {
+      "name": "recon-scope-triage",
+      "cat": "05-validation-reporting",
+      "source": "cache"
+    },
+    {
+      "name": "redteam-report-template",
+      "cat": "05-validation-reporting",
+      "source": "cache"
+    },
+    {
+      "name": "security-arsenal",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    },
+    {
+      "name": "supply-chain-attack-recon",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    },
+    {
+      "name": "vmware-vcenter-attack",
+      "cat": "04-security-auditing",
+      "source": "cache"
+    },
+    {
+      "name": "web2-recon",
+      "cat": "02-recon-targeting",
+      "source": "cache"
+    }
+  ]
+}

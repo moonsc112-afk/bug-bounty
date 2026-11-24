@@ -1,0 +1,19 @@
+[
+  "test_chain_scope_guard.py::test_audit_flags_stale_and_conflicts",
+  "test_chain_scope_guard.py::test_authorize_active_and_deny_paths",
+  "test_chain_scope_guard.py::test_chain_wildcard_rule",
+  "test_chain_scope_guard.py::test_cli_exit_codes_and_explain",
+  "test_chain_scope_guard.py::test_cli_new_program",
+  "test_chain_scope_guard.py::test_diff_scope_sources",
+  "test_chain_scope_guard.py::test_draft_program_cannot_authorize",
+  "test_chain_scope_guard.py::test_explain_is_structured",
+  "test_chain_scope_guard.py::test_filter_file",
+  "test_chain_scope_guard.py::test_normalize_evm_case_and_chain_alias",
+  "test_chain_scope_guard.py::test_reject_malformed_evm",
+  "test_chain_scope_guard.py::test_solana_pubkey_validation",
+  "test_chain_scope_guard.py::test_wildcard_rules_only",
+  "test_scope_extract.py::test_chain_agnostic_scope",
+  "test_scope_extract.py::test_cli_from_input_file",
+  "test_scope_extract.py::test_draft_markdown_cannot_authorize",
+  "test_scope_extract.py::test_extracts_chain_addresses_and_out_of_scope"
+]

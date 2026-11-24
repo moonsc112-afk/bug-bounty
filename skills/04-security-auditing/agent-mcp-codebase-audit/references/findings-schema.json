@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hermes.local/skills/agent-mcp-codebase-audit/findings-schema.json",
+  "title": "Agent and MCP codebase audit findings",
+  "description": "Adapted from cloudflare/security-audit-skill report-schema.json. Keeps the three verdicts and source trace, adds a coverage ledger, an independent verifier record and the agent specific fields used by this skill.",
+  "type": "object",
+  "required": ["schema_version", "target", "generated_at", "coverage_ledger", "findings", "checked_not_a_problem", "not_covered"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "target": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "coverage_ledger": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["unit_id", "boundary", "entry_point", "sink", "state"],
+        "properties": {
+          "unit_id": { "type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$" },
+          "boundary": { "type": "string", "minLength": 1 },
+          "entry_point": { "type": "string", "minLength": 1 },
+          "sink": { "type": "string", "minLength": 1 },
+          "state": { "enum": ["planned", "candidate", "covered", "needs_validation", "blocked"] },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["verdict", "fingerprint", "title", "source", "sink", "attack", "impact", "fix", "locations", "trace", "verifier", "severity"],
+            "properties": {
+              "verdict": { "const": "confirmed" },
+              "fingerprint": { "type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$" },
+              "title": { "type": "string", "minLength": 1 },
+              "owasp": { "type": "string" },
+              "source": { "type": "string", "minLength": 1, "description": "Attacker controlled input and its entry point" },
+              "sink": { "type": "string", "minLength": 1, "description": "Model reachable or state changing sink" },
+              "attack": { "type": "string", "minLength": 1 },
+              "impact": { "type": "string", "minLength": 1 },
+              "fix": { "type": "string", "minLength": 1 },
+              "locations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+              "trace": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["kind", "value"], "properties": { "kind": { "enum": ["entry", "transform", "guard", "sink"] }, "value": { "type": "string", "minLength": 1 } } } },
+              "verifier": { "$ref": "#/$defs/verifier" },
+              "severity": { "enum": ["critical", "high", "medium", "low"] },
+              "evidence": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          {
+            "type": "object",
+            "required": ["verdict", "fingerprint", "title", "blockers", "validation_plan"],
+            "properties": {
+              "verdict": { "const": "needs_validation" },
+              "fingerprint": { "type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$" },
+              "title": { "type": "string", "minLength": 1 },
+              "source": { "type": "string" },
+              "sink": { "type": "string" },
+              "blockers": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+              "validation_plan": { "type": "string", "minLength": 1 },
+              "locations": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          {
+            "type": "object",
+            "required": ["verdict", "fingerprint", "title", "refutation"],
+            "properties": {
+              "verdict": { "const": "rejected" },
+              "fingerprint": { "type": "string", "minLength": 1, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$" },
+              "title": { "type": "string", "minLength": 1 },
+              "refutation": { "type": "string", "minLength": 1 },
+              "locations": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        ]
+      }
+    },
+    "checked_not_a_problem": { "type": "array", "items": { "type": "string" } },
+    "not_covered": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "verifier": {
+      "type": "object",
+      "required": ["id", "checks", "result"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "checks": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "result": { "enum": ["confirmed", "needs_validation", "rejected"] },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

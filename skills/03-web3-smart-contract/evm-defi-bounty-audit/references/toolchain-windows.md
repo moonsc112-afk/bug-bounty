@@ -1,0 +1,31 @@
+# Host toolchain and file pitfalls (Windows, git-bash)
+
+- Foundry `forge` is `~/.foundry/bin/forge` (v1.9). The bare `forge` on PATH is the Atlassian CLI. Always `export PATH="$HOME/.foundry/bin:$PATH"` before build or test.
+- `cast` on PATH is the correct Foundry binary. Slither 0.11.6, Medusa 1.5.1, and Echidna 2.4.0 are available natively; Echidna lives in `E:/tools/bin`.
+- Try batched JSON-RPC `eth_call` arrays first for config sweeps; if the endpoint returns HTTP 403, fall back to sequential single calls and record the endpoint. Why: a transport 403 on a batch reads like no data and can wrongly close a configuration-drift check, while a working batch saves one round trip per address.
+- When piping an address list from Python to bash on Windows, write the file with `newline="\n"` or strip the carriage return with `${addr%$'\r'}` before each `cast call`. Why: a trailing `\r` makes the address invalid and `cast` returns an empty string, which looks like a failed call rather than malformed input.
+- For deployed-bytecode selector comparison, the REA CLI runs from WSL Linux x64 with the evmole provider even when the Windows MCP marks `inspect_evm_interface` as `unsupported_host`. Keep EVMole CLI output labeled as a cross-check. Details in `rea-static-analysis`.
+- Public RPC `https://ethereum-rpc.publicnode.com` can return HTTP 403 for archive `eth_call`. Fall back to `https://eth.drpc.org` for fork tests, and document the switch.
+- Before declaring historical tracing unavailable, probe a second public archive endpoint with a single `eth_getBalance` at an old block, then retry `cast run <tx> --rpc-url <that-endpoint> --quick`. A first provider refusing archive state does not prove the trace method is absent everywhere.
+- Verified source: Blockscout v2 `https://eth.blockscout.com/api/v2/smart-contracts/<address>`, with Sourcify v2 as fallback.
+- Scope guard script lives at `C:/Users/TUF-GAMING/AppData/Local/hermes/skills/research/chain-scope-guard/scripts/scope.sh`; run with `--programs-dir <dir> --audit` before work and `evm:1:<address>` against each candidate.
+- Platform status can be queried with the helper at `C:/Users/TUF-GAMING/AppData/Local/hermes/skills/hermes-mcp-mantis-login/scripts/mantis_rpc.py`. Import it and call `mantis_rpc.call` so the API key is read from `.env` but never printed. Parse `result.content[0].text`; the helper truncates its own CLI output at 12000 characters.
+- Parallel builds must use separate worktrees/copies. Never let two agents build in the same repo.
+- Checksum manifests must use LF endings. Rewriting them through Python with default Windows newline translation produces CRLF, and `sha256sum -c` then treats the trailing `\r` as part of the filename and fails every line. Write with `newline="\n"`.
+- The `read_file` tool returns line-numbered content (`N|...`). Do not feed that raw text back into `write_file`; use `patch` for edits.
+- `patch` can fail to match on CRLF files. After two failures on the same region, rewrite the file with a small raw Python read/write using `newline=""`, preserving existing line endings.
+- Verify block numbers against timestamps before using them. A value near 1.79e9 is a Unix timestamp, not an Ethereum block number.
+
+## Bootstrap Foundry over a Hardhat repo on Windows
+
+- Install only the Solidity deps the imports need into a scratch prefix (`<audit-root>/_deps/<target>` with a minimal `package.json`), then mirror into the repo with `cmd.exe /c robocopy "<src>" "<repo>/lib/node_modules" /MIR /NFL /NDL /NJH /NJS /NP /R:1 /W:1`. Why: `cp -r` over thousands of small npm files times out mid-copy and leaves a partial tree that fails the build.
+- `forge install` can fail with `Access is denied` on this host. Clone forge-std directly with `git clone --depth 1 --branch <tag> https://github.com/foundry-rs/forge-std.git lib/forge-std`. Why: submodule/symlink creation is blocked while a plain clone works.
+- Foundry rejects sources outside the project root and `lib`. Keep node_modules under `lib/node_modules` and point `remappings.txt` there; do not reference a sibling `_deps` directory. Why: a `../../_deps/...` remapping compiles as "File outside of allowed directories".
+- Remove any `solc` pin from `foundry.toml` when the tree contains legacy 0.6.x vendor files. Pinning one compiler makes every other pragma unresolvable; auto-detect fetches each required version.
+- Add `skip = ["contracts/**/vendor/*.vy"]` for Vyper files. Why: one `.vy` pragma aborts the whole build before the Solidity sources are checked.
+- Auto-detected remappings can append a package subpath, for example `solidity-bytes-utils/=lib/node_modules/solidity-bytes-utils/contracts/`, which breaks imports written as `solidity-bytes-utils/contracts/BytesLib.sol`. Override with an explicit `solidity-bytes-utils/=lib/node_modules/solidity-bytes-utils/` in `remappings.txt` and confirm with `forge remappings` before rebuilding.
+- Confirm a build with `forge build --quiet >/dev/null 2>&1; echo $?` plus an artifact count. Why: `forge build | tail` reports tail's exit code, not the compiler's.
+- With `forge-std/=lib/forge-std/`, import tests as `forge-std/src/Test.sol`. Why: that remapping resolves `forge-std/Test.sol` to a nonexistent `lib/forge-std/Test.sol`, while repo scripts using `forge-std/src/Script.sol` still compile.
+- When a constructor calls `_disableInitializers()`, do not call `initialize()` in a fresh test deployment. Find the owner slot with `forge inspect <Contract> storage --json` and write it with `vm.store(contract, bytes32(slot), bytes32(uint256(uint160(owner))))`. Why: the initializer is permanently disabled, so a direct storage write is the only way to drive owner-only setup on a fresh deployment.
+- Before signing an EIP-712 struct, check whether the helper returns the full typed digest or only the struct hash. If `hashOrder()` already calls `_hashTypedDataV4`, sign its return value directly with `vm.sign`; wrapping it in `\x19\x01` again yields `bad signature`.
+- Fix Solidity address-literal checksum errors with `cast --to-checksum-address <addr>` instead of guessing the letter case. Verify deployed wiring with `cast call <addr> 'getter()(address)' --rpc-url <rpc>` and compare it to the repo deployments JSON.

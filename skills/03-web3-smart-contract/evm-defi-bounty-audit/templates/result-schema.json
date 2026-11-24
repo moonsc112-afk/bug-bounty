@@ -1,0 +1,20 @@
+{
+  "summary": "Short verdict in the operator's language.",
+  "artifact_paths": ["Absolute path to each written artifact"],
+  "candidate_findings": [
+    {
+      "title": "Finding title",
+      "severity": "Critical|High|Medium|Low|Informational",
+      "file_line": "path:line",
+      "mechanism": "Attacker-controlled root cause",
+      "impact": "Concrete loss of funds",
+      "confidence": "high|medium|low",
+      "poc_command": "Exact reproducible command",
+      "poc_result": "Real command output",
+      "why_not_duplicate": "How it differs from prior verdicts"
+    }
+  ],
+  "negatives": ["Verified negative with exact reason and numbers"],
+  "blockers": ["Tool or scope limitation that prevents a stronger conclusion"],
+  "next_steps": ["Concrete next action"]
+}
